@@ -3,52 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rasa Chatbot</title>
-    <style>
-        #chat-container {
-            height: 300px;
-            overflow-y: scroll;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
-        #input-container {
-            margin-top: 10px;
-        }
-    </style>
+    <title>Button Link Example</title>
 </head>
 <body>
-    <div id="chat-container"></div>
-    <div id="input-container">
-        <input type="text" id="user-input" placeholder="Type your message...">
-        <button onclick="sendMessage()">Send</button>
-    </div>
 
-    <script>
-        function sendMessage() {
-            const userMessage = document.getElementById('user-input').value;
-            if (userMessage.trim() !== '') {
-                appendMessage('You', userMessage);
+    <h1>Welcome to My Website</h1>
+    
+    <!-- Button that links to index2.html -->
+    <a href="chatbot/templates/index2.html">
+        <button type="button">Go to Index2</button>
+    </a>
 
-                // Send user message to Flask server
-                fetch('/get-response/?message=' + encodeURIComponent(userMessage))
-                    .then(response => response.json())
-                    .then(data => {
-                        const rasaResponse = data.response;
-                        appendMessage('Rasa Bot', rasaResponse);
-                    });
-
-                document.getElementById('user-input').value = '';
-            }
-        }
-
-        function appendMessage(sender, message) {
-            const chatContainer = document.getElementById('chat-container');
-            const newMessage = document.createElement('div');
-            newMessage.innerHTML = `<strong>${sender}:</strong> ${message}`;
-            chatContainer.appendChild(newMessage);
-            chatContainer.scrollTop = chatContainer.scrollHeight; // Auto-scroll to the bottom
-        }
-    </script>
 </body>
 </html>
